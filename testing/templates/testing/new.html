@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Guessing</title>
+</head>
+<style>
+    body{
+        text-align: center;
+        
+    }
+    .container{
+        margin-top: 90px;
+    }
+    .form{
+       
+       text-align: center;
+       align-items: center;
+       
+       
+    }
+    
+    input{
+        margin-top: 4px;
+        padding: 10px;
+        width: 20%;
+        border-radius: 10px;
+        
+    }
+    h2{
+        color: rgb(87, 6, 162);
+    }
+    button{
+        padding: 10px;
+        border-radius: 25px;
+        margin-top: 5px;
+        border-style: none;
+        background-color: rgb(124, 21, 221);
+        color: whitesmoke  ;
+    }
+</style>
+<body>
+    <div class="container">
+       <h2>Guess The Lucky Number 🎲</h2>
+       <div class="form">
+         <label for="guess">Guess Number🤔</label><br>
+         <input type="text" id="guess" placeholder="Type here to Guess the Number (10-50)"><br>
+         <button onclick="guess()">Check</button>
+       </div>
+    </div>
+</body>
+<script>
+    
+
+    lucky_number = "{{lucky_number}}"
+    input = document.getElementById("guess");
+    console.log(lucky_number)
+    count = 3;
+    function guess(){
+        
+       if(count ==0){
+        window.location.reload();
+        alert("You have exhausted the count");
+        return
+        
+       } 
+       
+       if(lucky_number == input.value){
+        count -= 1;
+        alert("WOW!! you won💥")
+         window.location.reload(); 
+       }
+       else if(lucky_number < input.value){
+        count -= 1;
+        alert(`Sorry your guess is too large\n Try again ${count} times`);
+        return
+       }
+       else if(lucky_number > input.value ) {
+        count -= 1;
+        alert(`Sorry your guess is too small\n Try again ${count} times`);
+        return
+       }
+       else if(input.value == ""){
+          alert("Input can't be blank");
+          return
+       }
+    }
+</script>
+</html>
